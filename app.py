@@ -10,8 +10,6 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
 from tensorflow.keras.models import Model
-
-# Read the files word_to_idx.pkl and idx_to_word.pkl to get the mappings between word and index
 word_to_index = {}
 with open("word_to_idx.pkl", 'rb') as file:
     word_to_index = pd.read_pickle(file)
@@ -19,14 +17,11 @@ with open("word_to_idx.pkl", 'rb') as file:
 index_to_word = {}
 with open("idx_to_word.pkl", 'rb') as file:
     index_to_word = pd.read_pickle(file)
-
-# Load the model
 model = load_model("model_19.h5")
 
 resnet50_model = ResNet50(weights='imagenet', input_shape=(224, 224, 3))
 resnet50_model = Model(resnet50_model.input, resnet50_model.layers[-2].output)
 
-# Generate Captions for an image
 def predict_caption(photo):
     inp_text = "startseq"
     for i in range(38):
