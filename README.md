@@ -7,6 +7,7 @@ For caption generation, we use Long Short-Term Memory (LSTM) networks, a special
 
 ## Model Engineering
 This project utilizes the ResNet50 architecture for extracting image features. ResNets, or Residual Networks, gained prominence after winning the 2015 ImageNet Challenge. They enable the training of very deep neural networks, like the original ResNet with 152 layers, by addressing the vanishing gradient problem through Skip Connections, which provide alternative paths for gradient flow. ResNet50, a smaller variant of ResNet152, is commonly used for Transfer Learning and comes preloaded with weights trained on the ImageNet dataset in Keras. For this project, the last classification layer is removed, and the network is used solely for feature extraction. Encoded features for training and test images are saved in "encoded_train_features.pkl" and "encoded_test_features.pkl," respectively.
+
 ![Model used](model_plot.png)
 
 ## Live Demo
